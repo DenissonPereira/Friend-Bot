@@ -8,7 +8,7 @@ public class FriendBot {
     private static JTextField inputField;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Friend Bot");
+        JFrame frame = new JFrame("Chatbot GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
 
@@ -34,14 +34,12 @@ public class FriendBot {
     }
 
     private static void processUserInput() {
-        String userMessage = inputField.getText();
+        String userMessage = inputField.getText().toLowerCase();
         chatArea.append("You: " + userMessage + "\n");
 
-        // Respostas
-        String botResponse = "Chatbot: Olá! Como posso ajudar?\n";
-        chatArea.append(botResponse);
+        String botResponse = Respostas.getResposta(userMessage);
 
-        // Limpando campo
-        inputField.setText(""); 
+        chatArea.append("Chatbot: " + botResponse + "\n");
+        inputField.setText("");
     }
 }
